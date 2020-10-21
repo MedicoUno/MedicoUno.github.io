@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <header>
+    <svg class="header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 318.5 100 125" enable-background="new 0 318.5 100 100"></svg>
+  </header>
+
+<link rel="stylesheet" type="text/css" href="styles.css" />
+
+  <main class="content">
+    <h1>COMING SOON!</h1>
+
+    <div class="countdown">
+      <div class="countdown__days">
+        <div class="number"></div>
+        <span class>Days</span>
+      </div>
+
+      <div class="countdown__hours">
+        <div class="number"></div>
+        <span class>Hours</span>
+      </div>
+
+      <div class="countdown__minutes">
+        <div class="number"></div>
+        <span class>Minutes</span>
+      </div>
+
+      <div class="countdown__seconds">
+        <div class="number"></div>
+        <span class>Seconds</span>
+      </div>
+    </div>
+
+    <p>Our website is under construction. We`ll be here soon<br />with our new awesome site.</p>
+
+  </main>
+
+  <footer>
+    <ul class="footer__links">
+      <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+      <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+      <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+      <li><a href="#"><span class="fa fa-github"></span></a></li>
+      <li><a href="#"><span class="fa fa-dribbble"></span></a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+(() => {
+  // Specify the deadline date
+  const deadlineDate = new Date('November 2, 2020 23:59:59').getTime();
+  
+  // Cache all countdown boxes into consts
+  const countdownDays = document.querySelector('.countdown__days .number');
+  const countdownHours= document.querySelector('.countdown__hours .number');
+  const countdownMinutes= document.querySelector('.countdown__minutes .number');
+  const countdownSeconds= document.querySelector('.countdown__seconds .number');
+
+  // Update the count down every 1 second (1000 milliseconds)
+  setInterval(() => {    
+    // Get current date and time
+    const currentDate = new Date().getTime();
+
+    // Calculate the distance between current date and time and the deadline date and time
+    const distance = deadlineDate - currentDate;
+
+    // Calculations the data for remaining days, hours, minutes and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Insert the result data into individual countdown boxes
+    countdownDays.innerHTML = days;
+    countdownHours.innerHTML = hours;
+    countdownMinutes.innerHTML = minutes;
+    countdownSeconds.innerHTML = seconds;
+  }, 1000);
+})();
+</script>
